@@ -1,0 +1,181 @@
+@import "leaflet/dist/leaflet.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  /* ================================
+     AGRIAGENT AFRICA COLOR SYSTEM
+     ================================ */
+
+  --primary: #1f6b45;
+  --primary-dark: #154b32;
+  --primary-light: #e8f4ed;
+
+  --accent: #e58a25;
+  --accent-dark: #c66c12;
+  --accent-light: #fff1df;
+
+  --earth: #8b5e3c;
+  --earth-light: #f4e9df;
+
+  --success: #2e8b57;
+  --warning: #d98b20;
+  --danger: #c94c4c;
+  --info: #3478b9;
+
+  --background: #f5f7f2;
+  --surface: #ffffff;
+  --surface-soft: #f0f5ef;
+
+  --text: #17231b;
+  --text-muted: #647067;
+  --text-light: #8a958d;
+
+  --border: #dce5dc;
+  --border-light: #e9eee9;
+
+  --shadow-sm: 0 2px 8px rgba(25, 55, 38, 0.06);
+  --shadow: 0 8px 24px rgba(25, 55, 38, 0.09);
+  --shadow-lg: 0 18px 45px rgba(25, 55, 38, 0.13);
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  --transition: 180ms ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family:
+    "DM Sans",
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: var(--background);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(31, 107, 69, 0.06),
+      transparent 30%
+    ),
+    var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgba(31, 107, 69, 0.18);
+  color: var(--primary-dark);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf2ed;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b9c8bc;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Reusable typography */
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  color: var(--text);
+}
+
+h1,
+h2 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* Reusable button foundation */
+
+button {
+  border: none;
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(229, 138, 37, 0.35);
+  outline-offset: 2px;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+@import "leaflet/dist/leaflet.css";
