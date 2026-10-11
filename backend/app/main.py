@@ -9,15 +9,21 @@ DB = Path(__file__).resolve().parent.parent / "agriagent.db"
 app = FastAPI(title="AgriAgent Africa API", version="0.1.0",
               description="Demo API for cited advisory drafts, officer review, and audit logs.")
 
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://agriagent-africa-frontend.onrender.com",
+    ],
     allow_credentials=False,
-    allow_methods=["GET", "POST"],
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type"],
 )
+
 DEMO = {
  "HH-DEMO-001": {
   "household_id":"HH-DEMO-001","field_name":"Demo maize plot",
