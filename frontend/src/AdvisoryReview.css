@@ -1,1 +1,69 @@
 .ar-page{max-width:1180px;margin:0 auto;padding:26px;color:#17231c;font-family:Inter,system-ui,sans-serif}.ar-header,.ar-actions,.ar-advisory-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.ar-header{margin-bottom:20px}.ar-header h1{font-size:clamp(25px,3vw,36px);margin:0}.ar-eyebrow{font-size:11px;font-weight:800;letter-spacing:.13em;color:#237446}.ar-muted{color:#66746a;font-size:13px;line-height:1.5}.ar-notice{display:flex;gap:12px;background:#fff8df;border:1px solid #e8ce77;padding:13px;border-radius:11px;margin:16px 0}.ar-notice p{margin:4px 0;font-size:13px}.ar-error{background:#fff0f0;color:#8b2020;border:1px solid #e5b1b1;padding:12px;border-radius:8px}.ar-section{border:1px solid #e0e8e1;border-radius:15px;padding:19px;margin:17px 0;box-shadow:0 3px 14px #17231c08}.ar-section h2{display:flex;align-items:center;gap:9px;font-size:19px}.ar-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}.ar-card,.ar-advisory{border:1px solid #e0e8e1;border-radius:11px;padding:14px;min-width:0}.ar-card span{display:block;font-size:12px;color:#66746a}.ar-card b{display:block;font-size:19px;margin:7px 0;overflow-wrap:anywhere}.ar-card p{font-size:12px;color:#66746a}.ar-satellite,.ar-risk,.ar-review-note{background:#f3f7f3;padding:10px;border-radius:8px;font-size:13px;line-height:1.5}.ar-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:8px;padding:10px 13px;font-weight:700;cursor:pointer}.ar-btn:disabled{opacity:.5}.ar-primary{background:#237446;color:#fff}.ar-light{background:#edf3ee;color:#214a32}.ar-empty{padding:24px;text-align:center;border:1px dashed #cbd8ce;border-radius:10px;color:#66746a}.ar-advisory{margin-top:13px}.ar-advisory h3{margin:0;font-size:17px}.ar-advisory h4{margin:15px 0 5px;font-size:13px}.ar-advisory p,.ar-advisory li{font-size:13px;line-height:1.6}.ar-status{font-size:11px;padding:6px 9px;border-radius:99px;text-transform:capitalize;font-weight:800}.ar-status.pending{background:#fff0c2;color:#795700}.ar-status.done{background:#e3f4e8;color:#21653a}.ar-form{border-top:1px solid #e0e8e1;padding-top:14px;margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.ar-form h4{grid-column:1/-1;margin:0}.ar-form label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:700}.ar-form input,.ar-form select,.ar-form textarea{font:inherit;font-weight:400;padding:10px;border:1px solid #cbd8ce;border-radius:8px;min-width:0}.ar-form .ar-wide{grid-column:1/-1}.ar-form button{justify-self:start}.ar-table-wrap{overflow-x:auto}.ar-section table{width:100%;border-collapse:collapse;font-size:12px}.ar-section th,.ar-section td{text-align:left;border-bottom:1px solid #e4ebe5;padding:10px}.ar-section th{color:#66746a}@media(max-width:780px){.ar-page{padding:14px}.ar-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ar-header{flex-direction:column}}@media(max-width:520px){.ar-grid,.ar-form{grid-template-columns:1fr}.ar-form h4,.ar-form .ar-wide{grid-column:auto}.ar-advisory-head{flex-direction:column}}
+
+/* Clear, accessible officer review form */
+.ar-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid #dce6dc;
+  border-radius: 14px;
+  background: #f8fbf7;
+}
+
+.ar-form h4 {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.ar-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #24382b;
+}
+
+.ar-form input,
+.ar-form select,
+.ar-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #cbd8cc;
+  border-radius: 8px;
+  background: #fff;
+  color: #17231b;
+  font: inherit;
+}
+
+.ar-form input:focus,
+.ar-form select:focus,
+.ar-form textarea:focus {
+  outline: 2px solid #39804c;
+  outline-offset: 2px;
+}
+
+.ar-form .ar-wide {
+  grid-column: 1 / -1;
+}
+
+.ar-form .ar-btn {
+  justify-self: start;
+  min-height: 44px;
+}
+
+@media (max-width: 640px) {
+  .ar-form {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .ar-form h4,
+  .ar-form .ar-wide {
+    grid-column: auto;
+  }
+}

@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { RefreshCw, FileSearch, AlertTriangle, ClipboardList, CheckCircle2, XCircle, PencilLine } from "lucide-react";
 import "./AdvisoryReview.css";
-const API="http://127.0.0.1:8000";
+const API = "https://agriagent-africa.onrender.com";
+//const API="http://127.0.0.1:8000";
 type Evidence={household_id:string;field_name:string;data_status:string;rainfall_7d_mm:number;rainfall_source:string;rainfall_date:string;soil_moisture_pct:number;soil_moisture_source:string;soil_moisture_date:string;crop:string;growth_stage:string;market_price_kes_per_kg:number;market_source:string;market_date:string;satellite_status:string;satellite_note:string};
 type Draft={title:string;risk_level:string;risk_score:number;score_note:string;recommendation:string;evidence:string[];limitations:string[];requires_officer_approval:boolean;external_message_sent:boolean};
 type Advisory={id:string;household_id:string;status:string;draft:Draft;created_at:string;officer_name?:string|null;reviewed_at?:string|null;review_note?:string|null};

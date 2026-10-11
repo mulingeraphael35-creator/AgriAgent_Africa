@@ -21,6 +21,7 @@ import FarmMap from "./FarmMap";
 import "./App.css";
 import { getIrrigationDecision } from "./irrigationService";
 import MarketIntelligence from "./MarketIntelligence";
+import AdvisoryReview from "./AdvisoryReview";
 import FarmTeam from "./FarmTeam";
 
 function FieldsPage({
@@ -759,7 +760,24 @@ setAgentResponse(response + fieldContext);
             <Users size={19} />
             <span>Farm Team</span>
           </button>
+          
+          
+
+          <button
+            type="button"
+            className={`nav-item ${activePage === "advisory-review" ? "active" : ""}`}
+            onClick={() => {
+              setActivePage("advisory-review");
+              setSelectedField(null);
+              setMobileMenu(false);
+            }}
+          >
+            <Users size={19} />
+            <span>Advisory Review</span>
+          </button>
         </nav>
+
+        
 
         <div className="sidebar-bottom">
           <button type="button" className="nav-item">
@@ -1374,6 +1392,9 @@ onViewField={(fieldName, latitude, longitude) => {
             </div>
           </div>
         )}
+        {activePage === "advisory-review" && (
+  <AdvisoryReview />
+)}
       </main>
     </div>
   );
