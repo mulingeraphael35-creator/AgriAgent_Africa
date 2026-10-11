@@ -11,7 +11,26 @@ async function api<T>(path:string,init?:RequestInit):Promise<T>{const r=await fe
 export default function AdvisoryReview(){const[e,setE]=useState<Evidence|null>(null);const[a,setA]=useState<Advisory[]>([]);const[l,setL]=useState<Audit[]>([]);const[busy,setBusy]=useState(false);const[loading,setLoading]=useState(false);const[err,setErr]=useState("");const[officer,setOfficer]=useState("");const[decision,setDecision]=useState<"approve"|"edit"|"reject">("approve");const[note,setNote]=useState("");const[edited,setEdited]=useState("");
 const refresh=useCallback(async()=>{setLoading(true);setErr("");try{const[x,y,z]=await Promise.all([api<Evidence>("/evidence/HH-DEMO-001"),api<Advisory[]>("/advisories"),api<Audit[]>("/audit")]);setE(x);setA(y);setL(z)}catch(x){setErr(x instanceof Error?x.message:"Could not connect. Is the backend running?")}finally{setLoading(false)}},[]);
 useEffect(()=>{void refresh()},[refresh]);
-async function create(){setBusy(true);setErr("");try{await api("/advisories/draft/HH-DEMO-001",{method:"POST"});await refresh()}catch(x){setErr(x instanceof Error?x.message:"Draft failed")}finally{setBusy(false)}}
+
+async function create() {
+  if (a.some((item) => item.status === "pending_review")) {
+    setErr("A draft is already awaiting officer review. Review it before generating another.");
+    return;
+  }
+
+  setBusy(true);
+  setErr("");
+
+  try {
+    await api("/advisories/draft/HH-DEMO-001", { method: "POST" });
+    await refresh();
+  } catch (x) {
+    setErr(x instanceof Error ? x.message : "Draft failed");
+  } finally {
+    setBusy(false);
+  }
+}
+
 async function review(item:Advisory){if(!officer.trim()||!note.trim()){setErr("Enter officer name and review note.");return}if(decision==="edit"&&!edited.trim()){setErr("Enter the edited recommendation.");return}if(!window.confirm(`${decision.toUpperCase()} this draft? This records a review only; no SMS will be sent.`))return;setBusy(true);setErr("");try{await api(`/advisories/${item.id}/review`,{method:"POST",body:JSON.stringify({officer_name:officer.trim(),decision,review_note:note.trim(),...(decision==="edit"?{edited_advisory:edited.trim()}:{})})});setNote("");setEdited("");await refresh()}catch(x){setErr(x instanceof Error?x.message:"Review failed")}finally{setBusy(false)}}
 const pending=a.filter(x=>x.status==="pending_review");
 return <main className="ar-page"><header className="ar-header"><div><p className="ar-eyebrow">AGRIAGENT AFRICA · EXTENSION WORKFLOW</p><h1>Evidence &amp; Advisory Review</h1><p className="ar-muted">Review farm evidence, draft a sourced advisory, and record an officer decision.</p></div><button className="ar-btn ar-light" onClick={()=>void refresh()} disabled={loading||busy}><RefreshCw size={16}/>{loading?"Refreshing…":"Refresh"}</button></header>
